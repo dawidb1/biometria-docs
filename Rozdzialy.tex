@@ -1,0 +1,148 @@
+\renewcommand{\arraystretch}{1.2}
+
+\chapter{Wstêp}
+\section{Cel projektu}
+Celem pracy by³a analiza biometrycznych systemów zabezpieczeñ opartych na odczycie linii papilarnych w urz¹dzeniach u¿ytku codziennego oraz implemetacja autoryzacji dostêpu 
+do aplikacji mobilnej przy pomocy czytnika linii papilarnych. 
+\section{Zakres pracy}
+Zakres pracy:
+\begin{enumerate}
+\item Analiza wykorzystywanych systemów biometrycznych.
+\item Analiza dostêpnych czytników linii papilarnych.
+\item Analiza metod implementacji czytników linii papilarnych w aplikacjach.
+\item Implementacja obs³ugi autoryzacji dostêpu do aplikacji poprzez czytnik linii papilarnych:
+
+\begin{enumerate}
+\item przygotowanie widoków,
+\item opracowanie API,
+\item po³¹czenie widoków i API z istniej¹c¹ aplikacj¹.
+\end{enumerate}
+
+\item Opracowanie podsumowania i wniosków.
+\end{enumerate}
+
+
+\section{Wstêp teoretyczny}
+\subsection{Systemy biometryczne}
+Biometria jest nauk¹ zajmuj¹c¹ siê pomiarami i analiz¹ cech fizycznych i behawioralnych organizmów ¿ywych. Dane te wykorzystywane s¹ w wielu innych dziedzinach nauki kryminologii, antropologii, fizjologii, medycynie[1, 2].
+Najczêœciej spotykanym zastosowaniem metod biometrycznych jest kontrola dostêpu 
+w systemach zabezpieczeñ. Systemy takie mog¹ za pomoc¹ danych biometrycznych udzielaæ dostêpu do systemu b¹dŸ okreœlonych danych jedynie osobom do tego uprawnionym. Mocn¹ stron¹ tego rozwi¹zania jest indywidualnoœæ cech, które s¹ wykorzystywane.
+Cechami biometrycznymi nazywamy indywidualne atrybuty, które charakteryzuj¹ siê znikom¹ powtarzalnoœci¹ w obrêbie populacji. Do cech takich zaliczamy miêdzy innymi:
+\begin{itemize}
+\item odcisk palca,
+\item wzór têczówki oka,
+\item g³os,
+\item zapach,
+\item chód,
+\item podpis.
+\end{itemize}
+
+Najbradziej rozpowszechnion¹ cech¹ wykorzystywan¹ do autoryzacji dostêpu jest analiza linii papilarnych. Czytniki linii papilarnych motowane s¹ w wiêkszoœci wspó³czesnych smartphonów, mog¹ zasêpowaæ klucz do drzwi lub byæ alternatywnym sposobem logowania siê do komputera.
+Cechy biometryczne mierzone kilkukrotnie u tego samego cz³owieka, charakteryzuj¹ 
+siê zmiennoœci¹ dla poszczególnych pomiarów. Wi¹¿e siê to z zale¿noœci¹ tych cech od stanu psychofizycznego cz³owieka, warunków otoczenia czy interakcji u¿ytkownika z czujnikiem[3]. Wynikiem tego jest brak mo¿liwoœci okreœlenia stuprocentowej zgodnoœci wzorca z innym  pomiarem danej cechy.
+
+\subsection{Czytniki linii papilarnych}
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=.8\textwidth]{skanery}
+	\caption{Skanery linii papilarnych.}\label{l:skanery}
+\end{figure}
+Praktyka wykorzytywania cech biometrycznych do identyfikacji, weryfikacji oraz autoryzacji osób za pomoc¹ cech biometrycznych wi¹¿e siê z behawioralnym przystosowaniem cz³owieka. Ma to miejsce za ka¿dym razem kiedy rozpoznajemy ludzi na podstawie twarzy. Umiejêtnoœæ ta wykorzystywana jest przez ludzi czêsto nie œwiadomie.
+Œwiadome wykorzytywanie cech biometrycznych mia³o jednak miejsce ju¿ 500 p.n.e. kiedy to zaczêto wykorzystywaæ odcisk palca do rejestracji transakcji. W poŸniejszym okresie, 
+za spraw¹ M. Malpighi’ego oraz J. C. A. Mayer’a, odcisk palca a w³aœciwie jego cechy zosta³y opisane oraz stwierdzono ich unikatowoœæ. Dziêki pracy tych osób na koñcu XIX w. stworzony zosta³ pierwszy kompletny system klasyfikacji osób na podstawie odcisków palca. Autorem prac by³ Sir E. Henry [4]. Pomiarów dokonywano na odbitych na papierze palców wczeœniej zamoczonych w tuszu.
+Dziœ do pomiarów odcisków palców wykorzystuje siê czytniki odcisków palców. Skanery linii papilarnych, ze wzglêdu na ykorzystywan¹ metodê pomiaru mo¿emy podzieliæ 
+na optyczne, pó³przewodnikowe oraz ultradŸwiêkowe. Skanery optyczne bêd¹ce, jednymi
+z pierwszych stosowanych, wykorzystuj¹ zjawisko odbicia œwiat³a. Najczêœciej obraz zbierany jest z serii jednowymiarowych zestawów danych, których wychwycenie nastêpuje na skutek przeci¹gniêcia palcem po czujniku. Tworzony przez takie czujniki dwuwymiarowy obraz jest z³o¿eniem tych kawa³ków, przy wykorzystaniu algorytów rekonstrukcyjnych [5]. Podzia³ skanerów zosta³ przedstawiony na rysunku (Rys.~\ref{l:skanery}).
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=.6\textwidth]{czujnik}
+	\caption{Schemat dzia³ania czujnika pojemnoœciowego.}\label{l:czujnik}
+\end{figure}
+
+W przypadku budowy macierzowej, które jednoczeœnie pozwala zebraæ ca³oœæ obrazu, rejestracja sygna³u odbywa siê przy wykorzystaniu kamer CMOS.
+Wykorzystanie zjawiska odbicia œwiat³a pozwala, na stosunkowo proste, podrobienie odcisku palca. Metoda ta, w wersji podstawowej, nie pozwala wkryæ cz³owieczeñstwa badanego obiektu. Nowoczeœniejsze, dro¿sze wersje czytników pozwalaj¹ okreœliæ cz³owieczeñstwo 
+dziêki, na przyk³ad pomiaowi natlenowania krwi w naczyniach wieñcowych.
+Najnowszymi pod wzglêdem wykorzystania technologi s¹ czytniki ultradŸwiêkowe. Wykorzystuj¹ one to samo falowe zjawisko co czujniki optyczne. Ich przewag¹ jest mo¿liwoœæ ukrycia ich pod os³onami. Wykorzystywane jest to w telefonach komórkowych, w których czytniki takie umieszczane s¹ pod ekranem. Dziêki temu s¹ nie widoczne dla oczu, daj¹c mo¿liwoœæ autoryzacji u¿ytkownikowi.
+Najczêœciej stosowanymi z czujników s¹ czujniki pó³przewodnikowe. Ich budowa najczêœciej sprowadza siê do dwuwarstwowej macierzy pó³przewodników tworz¹cymi pewien rodzaj kondensatora. Mierzona jest pojemnoœæ tych kondensatorów, która zmienia siê je¿eli 
+do wierzchniej strony przy³o¿ony zostanie palec. Do zmiany pojemnoœci konieczny jest ¿ywy palec, lub kopia z odpowiedniego materia³u, jest on zatem bezpieczniejszy od czujnika optycznego [5,6]. Schemat dzia³ania czujnika linii papilarnych zosta³ przedstawiony na rysunku (Rys.~\ref{l:czujnik}).
+
+\chapter{Projekt}
+\section{Rozwi¹zanie problemu}
+\subsection{Wykorzystane technologie}
+\begin{table}[]
+\centering
+\caption{Szczegó³y wykorzystanych technologii.}
+\label{l:technologie}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Zakres}            & \textbf{Wykorzystana technologia}                \\ \hline
+System operacyjny          & Android (wersja \textgreater = 7.1)              \\ \hline
+Œrodowisko programistyczne & Android Studio                                   \\ \hline
+Jêzyk programowania        & Java                                             \\ \hline
+Baza danych                & SQLite                                           \\ \hline
+Technologia autoryzacji    & Android Fingerprint API, Bibliteki: Volley, Gson \\ \hline
+\end{tabular}
+\end{table}
+
+Do stworzenia implementacji modu³u autoryzacji dostêpu do aplikacji wykorzystano ró¿ne technologie. Zosta³y one wymienione w tabeli (Tab.~\ref{l:technologie}).
+
+\subsection{Widoki modu³u}
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=.5\textwidth]{widok2}
+	\caption{Powitalny widok logowania odciskiem palca.}\label{l:widok2}
+\end{figure}	
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=.5\textwidth]{widok1}
+	\caption{Widok rejestracji.}\label{l:widok1}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=.5\textwidth]{widok3}
+	\caption{Widok tradycyjnego logowania.}\label{l:widok3}
+\end{figure}
+
+Przygotowany modu³ obs³ugiwany jest przy pomocy trzech widocznych na rysunkach widoków (Rys.~\ref{l:widok1}, \ref{l:widok2}, \ref{l:widok3}). Widoki zaprojektowane zosta³y w Adobe XD, a nastêpnie przygotowane w programie Android Studio.
+
+\subsection{Utworzone API}
+\subsection{Po³¹czenie aplikacji}
+\subsection{U¿ytkowanie}
+Przygotowany modu³ pozwala na logowanie siê do zasobów aplikacji za pomoc¹ dwóch metod. Pierwsz¹ z metod jest wykorzystanie do tego celu loginu i has³a. Drug¹ metod¹ jest wykorzystanie odcisku palca, który jest zarejestrowany w specjalnie przeznaczonej do tego czêœci pamiêci telefonu. O ile logowanie wy³¹cznie przy pomocy pierwszej metody mo¿e funkcjonowaæ samodzielnie, jednak autoryzacja biometryczna wymaga dodatkowego niezale¿nego rodzaju logowania. Wi¹¿e siê to z ró¿nicami cech biometrycznych tej samej osoby w zale¿noœci na przyk³ad od otaczaj¹cego œrodowiska.
+Ponadto modu³ posiada formularz umo¿liwiaj¹cy rejestracjê nowego u¿ytkownika, wymagaj¹c¹ okreœlenia tylko danych do pierwszego rodzaju autoryzacji.
+Poszczególne czêœci posiadaj¹ osobne, spójne stylistyczne widoki, pomiêdzy którymi mo¿na siê prze³¹czaæ za pomoc¹ przycisków.
+
+
+
+\chapter{Podsumowanie}
+\section{Zastosowanie}
+Przygotowany modu³ pod³¹czony zosta³ do aplikacji ..... , która w pe³ni nie pozwala 
+na wykorzystanie jego potencja³u. Autoryzacja przy pomocy dwóch metod mo¿e byæ wykorzystywana przy ró¿nych intencjach. Wiele osób uwa¿a, ¿e wykorzystywanie autoryzacji odciskiem palca jest metod¹ szybsz¹ i wygodniejsz¹ ni¿ standardowe wpisanie loginu i has³a. Oznacza to, ¿e taki element z powodzeniem sprawdzi³ by siê w aplikacjach czêsto w³anczanych na krótki okres czasu. 
+Drug¹ opcj¹ s¹ programy obs³uguj¹ce dane wra¿liwe, które wymagaj¹ autoryzacji wykonania pewnych zadañ. To takich zaliczamy na przyk³ad aplikacje bankowe. Wykorzystanie do tego odcisku palca utrudnia przechwyt danych autoryzacyjnych przez osoby postronne. Aplikacje takie wymagaj¹ zazwyczaj autoryzacji na kilku poziomach (np. Otwarcie aplikacji, dostêp 
+do danych konta, autoryzacja przelewu). Kilkukrotna koniecznoœæ wpisania tych samych danych logowania pozwala osobie postronnej zapamiêtaæ dane logowania. Wykorzystanie 
+do tego celu odcisku palca jest szybsze i trudniejsze do odtworzenia. Ponadto odcisk palca dzia³a tylko w przypadku jednego, konkretnego urz¹dzenia, z którym jest sparowany wraz 
+z aplikacj¹.
+
+\section{Ograniczenia}
+Ograniczeniem w korzystaniu przez u¿ytkownika w stworzonym module s¹ wymagania odnoœnie has³a. Implementacja nie pozwala na wykorzystanie has³a krótszego ni¿ szeœcioznakowe. Ta redukcja elastycznoœci przy wyborze has³a kierowana jest dba³oœci¹ 
+o bezpieczeñstwo u¿ytkowników.
+Wykorzystanie platformy Android nie pozwala na u¿ycie innych bibliotek do autoryzacji odciskiem palca ni¿ oficjalne API od Google. Wi¹¿e siê to z koniecznoœci¹ wydobycia danych, z odrêbnej czêœci pamiêci telefonu, przechowuj¹cej dane wra¿liwe.  Jest to czêœæ systemu zabezpieczeñ systemu operacyjnego, zatem jest to ograniczenie na³o¿one dla bezpieczeñstwa. 
+
+\section{Wnioski}
+\begin{itemize}
+\item wniosek
+\end{itemize}
+
+\section{Literatura}
+\begin{enumerate}
+\item www.biometria.pl (dostêp: 1.06.2017)
+\item www.wikipedia.pl (dostêp: 1.06.2017)
+\item E. Dziuban „Metrologiczne aspekty biometrycznego rozpoznawania osób” PAK 12/2008
+\item M. Danch-Wierzchowska „Wyk³ad z przedmiotu Biometria: Odcisk palca” Zabrze 2019
+\item X. Xia, L. O’Gorman „ Innovations in fingerprint capture devices” Pergamon 2001
+\item M. Sandstrom „Liveness Detection in Fingerprint Recognition Systems” Linkoping 2004
+\end{enumerate}
+
