@@ -81,7 +81,7 @@ System operacyjny          & Android (wersja \textgreater = 7.1)              \\
 Œrodowisko programistyczne & Android Studio                                   \\ \hline
 Jêzyk programowania        & Java                                             \\ \hline
 Baza danych                & SQLite                                           \\ \hline
-Technologia autoryzacji    & Android Fingerprint API, Biblioteki: Volley, Gson \\ \hline
+Technologia autoryzacji    & Android Fingerprint API, Bibliteki: Volley, Gson \\ \hline
 \end{tabular}
 \end{table}
 
@@ -110,8 +110,6 @@ Przygotowany modu³ obs³ugiwany jest przy pomocy trzech widocznych na rysunkach w
 
 \subsection{Utworzone API}
 \subsection{Po³¹czenie aplikacji}
-Modu³ logowania po³¹czony zosta³ aplikacj¹ \textit{Audiometria}, która umo¿liwia przeprowadzanie badañ audiometrii tonalnej oraz zapisie wyników w pamiêci telefonu.\newline W pierwszej kolejnoœci owy modu³ pozwala na zalogowanie do aplikacji przy pomocy odcisku palca. Korzysta on z wewnêtrznego magazynu odcisków palca, które dostarcza system Android od wersji API 23. Wersja dostêpu do aplikacji poprzez zalogowanie siê tradycyjn¹ metod¹ (login i has³o) zrealizowana jest poprzez po³¹czenie z zewnêtrznym dziêki bibliotece \textit{Volley}. Aplikacja mo¿e po³¹czyæ siê z API wystawionym w serwisie \textit{Azure}. 
-
 \subsection{U¿ytkowanie}
 Przygotowany modu³ pozwala na logowanie siê do zasobów aplikacji za pomoc¹ dwóch metod. Pierwsz¹ z metod jest wykorzystanie do tego celu loginu i has³a. Drug¹ metod¹ jest wykorzystanie odcisku palca, który jest zarejestrowany w specjalnie przeznaczonej do tego czêœci pamiêci telefonu. O ile logowanie wy³¹cznie przy pomocy pierwszej metody mo¿e funkcjonowaæ samodzielnie, jednak autoryzacja biometryczna wymaga dodatkowego niezale¿nego rodzaju logowania. Wi¹¿e siê to z ró¿nicami cech biometrycznych tej samej osoby w zale¿noœci na przyk³ad od otaczaj¹cego œrodowiska.
 Ponadto modu³ posiada formularz umo¿liwiaj¹cy rejestracjê nowego u¿ytkownika, wymagaj¹c¹ okreœlenia tylko danych do pierwszego rodzaju autoryzacji.
@@ -121,7 +119,7 @@ Poszczególne czêœci posiadaj¹ osobne, spójne stylistyczne widoki, pomiêdzy który
 
 \chapter{Podsumowanie}
 \section{Zastosowanie}
-Przygotowany modu³ pod³¹czony zosta³ do aplikacji \textit{Audiometria}, która w pe³ni nie pozwala 
+Przygotowany modu³ pod³¹czony zosta³ do aplikacji ..... , która w pe³ni nie pozwala 
 na wykorzystanie jego potencja³u. Autoryzacja przy pomocy dwóch metod mo¿e byæ wykorzystywana przy ró¿nych intencjach. Wiele osób uwa¿a, ¿e wykorzystywanie autoryzacji odciskiem palca jest metod¹ szybsz¹ i wygodniejsz¹ ni¿ standardowe wpisanie loginu i has³a. Oznacza to, ¿e taki element z powodzeniem sprawdzi³ by siê w aplikacjach czêsto w³anczanych na krótki okres czasu. 
 Drug¹ opcj¹ s¹ programy obs³uguj¹ce dane wra¿liwe, które wymagaj¹ autoryzacji wykonania pewnych zadañ. To takich zaliczamy na przyk³ad aplikacje bankowe. Wykorzystanie do tego odcisku palca utrudnia przechwyt danych autoryzacyjnych przez osoby postronne. Aplikacje takie wymagaj¹ zazwyczaj autoryzacji na kilku poziomach (np. Otwarcie aplikacji, dostêp 
 do danych konta, autoryzacja przelewu). Kilkukrotna koniecznoœæ wpisania tych samych danych logowania pozwala osobie postronnej zapamiêtaæ dane logowania. Wykorzystanie 
@@ -134,7 +132,9 @@ o bezpieczeñstwo u¿ytkowników.
 Wykorzystanie platformy Android nie pozwala na u¿ycie innych bibliotek do autoryzacji odciskiem palca ni¿ oficjalne API od Google. Wi¹¿e siê to z koniecznoœci¹ wydobycia danych, z odrêbnej czêœci pamiêci telefonu, przechowuj¹cej dane wra¿liwe.  Jest to czêœæ systemu zabezpieczeñ systemu operacyjnego, zatem jest to ograniczenie na³o¿one dla bezpieczeñstwa. 
 
 \section{Wnioski}
-Stworzony modu³ dzia³a poprawni i stanowi warstwê bezpieczeñstwa dla aplikacji \textit{Audiometria}. Z powodzeniem móg³by równie¿ byc zastosowany w innych rozwi¹zaniach, np. aplikacjach bankowych lub pracowniczych.
+\begin{itemize}
+\item wniosek
+\end{itemize}
 
 \section{Literatura}
 \begin{enumerate}
