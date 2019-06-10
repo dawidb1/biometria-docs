@@ -68,8 +68,8 @@ Najczêœciej stosowanymi z czujników s¹ czujniki pó³przewodnikowe. Ich budowa naj
 do wierzchniej strony przy³o¿ony zostanie palec. Do zmiany pojemnoœci konieczny jest ¿ywy palec, lub kopia z odpowiedniego materia³u, jest on zatem bezpieczniejszy od czujnika optycznego [5,6]. Schemat dzia³ania czujnika linii papilarnych zosta³ przedstawiony na rysunku (Rys.~\ref{l:czujnik}).
 
 \chapter{Projekt}
-\section{Rozwi¹zanie problemu}
-\subsection{Wykorzystane technologie}
+
+\section{Wykorzystane technologie}
 \begin{table}[]
 \centering
 \caption{Szczegó³y wykorzystanych technologii.}
@@ -78,16 +78,21 @@ do wierzchniej strony przy³o¿ony zostanie palec. Do zmiany pojemnoœci konieczny 
 \hline
 \textbf{Zakres}            & \textbf{Wykorzystana technologia}                \\ \hline
 System operacyjny          & Android (wersja \textgreater = 7.1)              \\ \hline
-Œrodowisko programistyczne & Android Studio                                   \\ \hline
-Jêzyk programowania        & Java                                             \\ \hline
-Baza danych                & SQLite                                           \\ \hline
+Œrodowisko programistyczne & Android Studio i Visual Studio                                   \\ \hline
+Jêzyk programowania        & Java i C\#(API)                                             \\ \hline
+Baza danych                & MS SQL 
+\\ \hline
+Platforma API & .NET Core 2.0
+\\ \hline
 Technologia autoryzacji    & Android Fingerprint API, Biblioteki: Volley, Gson \\ \hline
+Publikowanie API & MS Azure services
+\\ \hline
 \end{tabular}
 \end{table}
 
 Do stworzenia implementacji modu³u autoryzacji dostêpu do aplikacji wykorzystano ró¿ne technologie. Zosta³y one wymienione w tabeli (Tab.~\ref{l:technologie}).
 
-\subsection{Widoki modu³u}
+\section{Widoki modu³u}
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=.5\textwidth]{widok2}
@@ -108,16 +113,16 @@ Do stworzenia implementacji modu³u autoryzacji dostêpu do aplikacji wykorzystano
 
 Przygotowany modu³ obs³ugiwany jest przy pomocy trzech widocznych na rysunkach widoków (Rys.~\ref{l:widok1}, \ref{l:widok2}, \ref{l:widok3}). Widoki zaprojektowane zosta³y w Adobe XD, a nastêpnie przygotowane w programie Android Studio.
 
-\subsection{Utworzone API}
-\subsection{Po³¹czenie aplikacji}
+\section{Utworzone API}
+Aplikacja przy pierwszym logowaniu ³¹czy siê z API, w celu autoryzacji u¿ytkownika i do tego celu u¿ywa Internetu. Do autoryzacji oraz rejestracji utworzono API napisane na platformê .NET Core. Zosta³o ono opublikowane przez portal Microsoft Azure. Po podaniu loginu i has³a, u¿ytkownik jest sprawdzany w bazie. Opcja rejestracji umo¿liwia dodanie nowego u¿ytkownika za pomoc¹ maila oraz has³a. 
+
+\section{Po³¹czenie aplikacji}
 Modu³ logowania po³¹czony zosta³ aplikacj¹ \textit{Audiometria}, która umo¿liwia przeprowadzanie badañ audiometrii tonalnej oraz zapisie wyników w pamiêci telefonu.\newline W pierwszej kolejnoœci owy modu³ pozwala na zalogowanie do aplikacji przy pomocy odcisku palca. Korzysta on z wewnêtrznego magazynu odcisków palca, które dostarcza system Android od wersji API 23. Wersja dostêpu do aplikacji poprzez zalogowanie siê tradycyjn¹ metod¹ (login i has³o) zrealizowana jest poprzez po³¹czenie z zewnêtrznym dziêki bibliotece \textit{Volley}. Aplikacja mo¿e po³¹czyæ siê z API wystawionym w serwisie \textit{Azure}. 
 
-\subsection{U¿ytkowanie}
+\section{U¿ytkowanie}
 Przygotowany modu³ pozwala na logowanie siê do zasobów aplikacji za pomoc¹ dwóch metod. Pierwsz¹ z metod jest wykorzystanie do tego celu loginu i has³a. Drug¹ metod¹ jest wykorzystanie odcisku palca, który jest zarejestrowany w specjalnie przeznaczonej do tego czêœci pamiêci telefonu. O ile logowanie wy³¹cznie przy pomocy pierwszej metody mo¿e funkcjonowaæ samodzielnie, jednak autoryzacja biometryczna wymaga dodatkowego niezale¿nego rodzaju logowania. Wi¹¿e siê to z ró¿nicami cech biometrycznych tej samej osoby w zale¿noœci na przyk³ad od otaczaj¹cego œrodowiska.
 Ponadto modu³ posiada formularz umo¿liwiaj¹cy rejestracjê nowego u¿ytkownika, wymagaj¹c¹ okreœlenia tylko danych do pierwszego rodzaju autoryzacji.
 Poszczególne czêœci posiadaj¹ osobne, spójne stylistyczne widoki, pomiêdzy którymi mo¿na siê prze³¹czaæ za pomoc¹ przycisków.
-
-
 
 \chapter{Podsumowanie}
 \section{Zastosowanie}
@@ -134,7 +139,13 @@ o bezpieczeñstwo u¿ytkowników.
 Wykorzystanie platformy Android nie pozwala na u¿ycie innych bibliotek do autoryzacji odciskiem palca ni¿ oficjalne API od Google. Wi¹¿e siê to z koniecznoœci¹ wydobycia danych, z odrêbnej czêœci pamiêci telefonu, przechowuj¹cej dane wra¿liwe.  Jest to czêœæ systemu zabezpieczeñ systemu operacyjnego, zatem jest to ograniczenie na³o¿one dla bezpieczeñstwa. 
 
 \section{Wnioski}
-Stworzony modu³ dzia³a poprawni i stanowi warstwê bezpieczeñstwa dla aplikacji \textit{Audiometria}. Z powodzeniem móg³by równie¿ byc zastosowany w innych rozwi¹zaniach, np. aplikacjach bankowych lub pracowniczych.
+\begin{itemize}
+\item Stworzony modu³ dzia³a poprawnie i stanowi warstwê bezpieczeñstwa dla aplikacji \textit{Audiometria}. Z powodzeniem móg³by równie¿ byc zastosowany w innych rozwi¹zaniach, np. aplikacjach bankowych lub pracowniczych.
+\item Utworzony system jest re-u¿ywalny i ³atwo go zaimportowaæ do ju¿ powsta³ych aplikacji, ze wzglêdu na odseparowanie od innych modu³ów aplikacji.
+\item Metody biometryczne autoryzacji s¹ ³atwo dostêpne dziêki us³ugom takim jak Android API.
+\item U¿ywanie autoryzacji metodami biometrycznymi, takimi jak odcisk palca, znacznie skraca czas dostêpu do wra¿liwych danych, przy zachowaniu odpowiedniego poziomu bezpieczeñstwa.
+\end{itemize}
+
 
 \section{Literatura}
 \begin{enumerate}
